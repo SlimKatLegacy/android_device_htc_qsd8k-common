@@ -74,10 +74,19 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=1 \
-    debug.hwc.fakevsync=1 \
+    debug.sf.no_hw_vsync=1 \
     debug.composition.type=mdp \
-    ro.zygote.disable_gl_preload=true \
-    debug.gr.numframebuffers=2
+    debug.egl.profiler=1 \
+    debug.egl.hw=1 \
+    debug.composition.type=gpu \
+    debug.gr.numframebuffers=2 \
+    debug.performance.tuning=1 \
+    debug.hwui.render_dirty_regions=false \
+    persist.sys.ui.hw=1 \
+    persist.webview.provider=classic \
+    video.accelerate.hw=1 \
+    view.scroll_friction=0 \
+    ro.zygote.disable_gl_preload=true
 
 #
 # Low Mem
@@ -85,10 +94,35 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += ro.config.low_ram=true
 # Disable jit
 PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.jit.codecachesize=0
+# Enable Allow purging of assets
+PRODUCT_PROPERTY_OVERRIDES += persist.sys.purgeable_assets=1
+
+#
+# Battery tweaks
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.mot.eri.losalert.delay=1000 \
+    pm.sleep_mode=1
+
+#
+# Scrolling tweaks
+#
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.min_pointer_dur=8 \
+    ro.max.fling_velocity=12000 \
+    ro.min.fling_velocity=8000
 
 #
 # Dalvik Properties
 #
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapgrowthlimit=48m \
+    dalvik.vm.heapsize=64m \
+    dalvik.vm.execution-mode=int:jit \
+    dalvik.vm.lockprof.threshold=500 \
+    dalvik.vm.dexopt-flags=m=y \
+    ro.sys.fw.bg_apps_limit=12 \
+    dalvik.vm.checkjni=false
 
 # Default heap settings for 512mb device
 include frameworks/native/build/phone-hdpi-512-dalvik-heap.mk
@@ -115,7 +149,7 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=45
+    wifi.supplicant_scan_interval=180
 
 #
 # Qcom
