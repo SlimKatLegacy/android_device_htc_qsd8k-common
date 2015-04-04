@@ -164,7 +164,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.min_pointer_dur=8 \
     ro.max.fling_velocity=12000 \
-    ro.min.fling_velocity=8000
+    ro.min.fling_velocity=8000 \
+    windowsmgr.max_events_per_sec=120
 
 #
 # Dalvik Properties
