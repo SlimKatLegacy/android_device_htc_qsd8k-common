@@ -13,7 +13,7 @@ case "$target" in
         chown root.system /sys/devices/system/cpu/mfreq
         chmod 220 /sys/devices/system/cpu/mfreq
         # Configure and enable KSM
-        echo 1000 > /sys/kernel/mm/ksm/sleep_millisecs
+        echo 500 > /sys/kernel/mm/ksm/sleep_millisecs
         echo 100 > /sys/kernel/mm/ksm/pages_to_scan
         echo 1 > /sys/kernel/mm/ksm/run
     ;;
