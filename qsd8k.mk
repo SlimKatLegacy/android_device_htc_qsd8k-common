@@ -134,6 +134,9 @@ PRODUCT_PROPERTY_OVERRIDES += ro.config.low_ram=true
 PRODUCT_PROPERTY_OVERRIDES += dalvik.vm.jit.codecachesize=0
 # Enable Allow purging of assets
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.purgeable_assets=1
+# Disable atlas service at start-up to save memory
+PRODUCT_PROPERTY_OVERRIDES += \
+    config.disable_atlas=true
 
 #
 # Battery tweaks
